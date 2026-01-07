@@ -29,33 +29,10 @@
         body { background-color: #f8fafd; color: #2C3E50; line-height: 1.6; scroll-behavior: smooth; opacity: 0; transition: opacity 0.8s ease; }
         body.loaded { opacity: 1; }
 
-        /* Navigation with Shortcut Menu (กลับมาครบแล้วครับ!) */
-        nav { 
-            background: var(--primary); 
-            padding: 0.8rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            color: white; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-        }
+        nav { background: var(--primary); padding: 0.8rem 5%; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .nav-logo { font-weight: 600; font-size: 1rem; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .nav-links { display: flex; gap: 8px; }
-        .nav-links a { 
-            color: white; 
-            text-decoration: none; 
-            font-size: 0.8rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 5px; 
-            padding: 6px 14px; 
-            border-radius: 50px; 
-            background: rgba(255,255,255,0.1); 
-            transition: 0.3s; 
-        }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 50px; background: rgba(255,255,255,0.1); transition: 0.3s; }
         .nav-links a:hover { background: var(--secondary); color: var(--primary); transform: translateY(-2px); }
 
         header { background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), url('school-bg.jpg'); background-size: cover; padding: 50px 5%; text-align: center; color: white; }
@@ -66,7 +43,6 @@
         section { margin-bottom: 40px; scroll-margin-top: 100px; transform: translateY(15px); opacity: 0; transition: 0.6s ease; }
         section.show { transform: translateY(0); opacity: 1; }
 
-        /* Infographic Steps Style */
         .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
         .step-card { background: white; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid #eee; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .step-num { width: 35px; height: 35px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-weight: bold; }
@@ -91,7 +67,7 @@
         .money-box { background: rgba(46, 125, 50, 0.08); border: 1px dashed var(--money-color); padding: 12px 18px; border-radius: 15px; margin: 15px 0; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
 
         .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; flex: 1; min-width: 160px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; border: 2px solid var(--primary); }
+        .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; flex: 1; min-width: 140px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; border: 2px solid var(--primary); }
         .btn-reg { background: var(--primary); color: white; }
         .btn-reg.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; cursor: not-allowed; }
         .btn-info { background: white; color: var(--primary); }
@@ -106,7 +82,7 @@
 
 <div id="loader">
     <div class="loader-content">
-        <img src="logonobg.jpg" alt="Logo" class="loader-logo">
+        <img src="logonobg.png" alt="Logo" class="loader-logo">
         <p class="loader-text">เตรียมข้อมูลระบบ...</p>
     </div>
 </div>
@@ -123,7 +99,7 @@
 </nav>
 
 <header>
-    <img src="logonobg.jpg" alt="Logo" class="hero-logo">
+    <img src="logonobg.png" alt="Logo" class="hero-logo">
     <h1>ระบบการรับสมัครนักเรียน ปีการศึกษา 2569</h1>
     <p>โรงเรียนชลบุรี "สุขบท" สพม.ชบ รย</p>
 </header>
@@ -133,30 +109,10 @@
     <section id="steps">
         <h2 style="text-align:center; color: var(--primary); margin-bottom: 30px;">4 ขั้นตอนง่ายๆ ในการสมัครเรียน</h2>
         <div class="steps-container">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <i class="fas fa-file-invoice"></i>
-                <h4>อ่านระเบียบการ</h4>
-                <p>เลือกสายการเรียน และดาวน์โหลดไฟล์ระเบียบการอ่านให้ครบถ้วน</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <i class="fas fa-user-edit"></i>
-                <h4>กรอกข้อมูล</h4>
-                <p>กดปุ่ม "สมัครออนไลน์" เพื่อกรอกข้อมูลและอัปโหลดไฟล์เอกสาร</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <i class="fas fa-search-location"></i>
-                <h4>รอตรวจสอบ</h4>
-                <p>เจ้าหน้าที่จะตรวจสอบข้อมูลภายใน 1-3 วัน โปรดติดตามสถานะ</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <i class="fas fa-print"></i>
-                <h4>พิมพ์บัตรสอบ</h4>
-                <p>เมื่อสถานะ "อนุมัติ" ให้พิมพ์บัตรประจำตัวสอบมาในวันสอบ</p>
-            </div>
+            <div class="step-card"><div class="step-num">1</div><i class="fas fa-file-invoice"></i><h4>อ่านระเบียบการ</h4><p>ศึกษาข้อมูลจากไฟล์ PDF ให้ครบถ้วน</p></div>
+            <div class="step-card"><div class="step-num">2</div><i class="fas fa-user-edit"></i><h4>กรอกข้อมูล</h4><p>คลิกสมัครออนไลน์และแนบเอกสาร</p></div>
+            <div class="step-card"><div class="step-num">3</div><i class="fas fa-search-location"></i><h4>รอตรวจสอบ</h4><p>รอเจ้าหน้าที่ยืนยันความถูกต้อง</p></div>
+            <div class="step-card"><div class="step-num">4</div><i class="fas fa-print"></i><h4>พิมพ์บัตรสอบ</h4><p>พิมพ์บัตรเพื่อใช้ในวันสอบจริง</p></div>
         </div>
     </section>
 
@@ -176,7 +132,7 @@
             </table>
             <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
             <div class="btn-group">
-                <a href="quota-info.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="Quato469.pdf" class="btn btn-info" target="_blank">ดูระเบียบการ ม.4</a>
                 <a href="#" class="btn btn-reg locked" id="btn-quota">ยังไม่เปิดรับสมัคร</a>
             </div>
         </div>
@@ -185,7 +141,7 @@
     <section id="gifted">
         <h2 class="section-title"><i class="fas fa-star"></i> รอบห้องเรียนพิเศษ (Gifted)</h2>
         <div class="card gifted-bg">
-            <span class="sub-title">วันสอบคัดเลือก: 21 กุมภาพันธ์ 2569</span>
+            <span class="sub-title">ช่วงรับสมัคร: 8 - 12 กุมภาพันธ์ 2569</span>
             <div class="mini-timer" id="timer-gifted">
                 <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
             </div>
@@ -198,14 +154,15 @@
             </table>
             <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>9,250 บาท</b></div></div>
             <div class="btn-group">
-                <a href="gifted-info.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="GiftedM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ ม.1</a>
+                <a href="GiftedM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ ม.4</a>
                 <a href="#" class="btn btn-reg locked" id="btn-gifted">ยังไม่เปิดรับสมัคร</a>
             </div>
         </div>
     </section>
 
     <section id="general">
-        <h2 class="section-title"><i class="fas fa-users"></i> รอบทั่วไป / EIS</h2>
+        <h2 class="section-title"><i class="fas fa-users"></i> รอบทั่วไป / ความสามารถพิเศษ</h2>
         <div class="card general-bg">
             <span class="sub-title">สมัครออนไลน์: 19 - 23 มีนาคม 2569</span>
             <div class="mini-timer" id="timer-general">
@@ -215,11 +172,14 @@
                 <thead><tr><th>ระดับชั้น</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
                 <tbody>
                     <tr><td>มัธยมศึกษาปีที่ 1 (ทั่วไป/EIS)</td><td>ห้องละ 40 คน (<span class="highlight">11</span> ห้อง)</td><td>440 คน</td></tr>
+                    <tr><td>มัธยมศึกษาปีที่ 4 (ทั่วไป)</td><td colspan="2">เปิดรับตามที่ว่างจากรอบโควตา</td></tr>
                 </tbody>
             </table>
             <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
             <div class="btn-group">
-                <a href="general-info.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="GenM169.pdf" class="btn btn-info" target="_blank">ระเบียบทั่วไป ม.1</a>
+                <a href="specialM169.pdf" class="btn btn-info" target="_blank">ความสามารถพิเศษ ม.1</a>
+                <a href="GenM469.pdf" class="btn btn-info" target="_blank">ระเบียบทั่วไป ม.4</a>
                 <a href="#" class="btn btn-reg locked" id="btn-general">ยังไม่เปิดรับสมัคร</a>
             </div>
         </div>
@@ -238,7 +198,6 @@
 </footer>
 
 <script>
-    // Effect โหลดหน้าเว็บ
     window.addEventListener('load', function() {
         const loader = document.getElementById('loader');
         setTimeout(() => {
@@ -251,7 +210,6 @@
         }, 1200);
     });
 
-    // ระบบนาฬิกาและปุ่ม
     function manageAdmission(elementId, btnId, startStr, endStr) {
         const startDate = new Date(startStr).getTime();
         const endDate = new Date(endStr).getTime();
