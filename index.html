@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การรับสมัครนักเรียนปีการศึกษา 2569 | โรงเรียนชลบุรี "สุขบท"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366; --secondary: #FFCC00;
+            --pastel-yellow: #FFF9E1; --pastel-blue: #E3F2FD;
+            --pastel-green: #E8F5E9; --money-color: #2e7d32;
+        }
+
+        /* --- ✨ 1. Speed Up Loader (1.2s) --- */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 9999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s;
+        }
+        .loader-content { text-align: center; animation: fadeInOut 1.5s infinite; }
+        .loader-logo { width: 90px; }
+        .loader-text { margin-top: 15px; color: var(--primary); font-size: 0.9rem; }
+        @keyframes fadeInOut { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kanit', sans-serif; }
+        body { background-color: #f8fafd; color: #2C3E50; line-height: 1.6; scroll-behavior: smooth; opacity: 0; transition: opacity 0.8s ease; }
+        body.loaded { opacity: 1; }
+
+        /* Navigation with Shortcut Menu (กลับมาครบแล้วครับ!) */
+        nav { 
+            background: var(--primary); 
+            padding: 0.8rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            color: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        }
+        .nav-logo { font-weight: 600; font-size: 1rem; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.8rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 5px; 
+            padding: 6px 14px; 
+            border-radius: 50px; 
+            background: rgba(255,255,255,0.1); 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover { background: var(--secondary); color: var(--primary); transform: translateY(-2px); }
+
+        header { background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), url('school-bg.jpg'); background-size: cover; padding: 50px 5%; text-align: center; color: white; }
+        .hero-logo { width: 85px; margin-bottom: 10px; }
+        header h1 { font-size: 2rem; color: var(--secondary); }
+
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        section { margin-bottom: 40px; scroll-margin-top: 100px; transform: translateY(15px); opacity: 0; transition: 0.6s ease; }
+        section.show { transform: translateY(0); opacity: 1; }
+
+        /* Infographic Steps Style */
+        .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+        .step-card { background: white; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid #eee; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .step-num { width: 35px; height: 35px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-weight: bold; }
+        .step-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
+        .step-card h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
+        .step-card p { font-size: 0.85rem; color: #666; }
+
+        .card { border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); background: white; border: 1px solid #eee; }
+        .quota-bg { background: var(--pastel-yellow); border-top: 5px solid #FBC02D; }
+        .gifted-bg { background: var(--pastel-blue); border-top: 5px solid #2196F3; }
+        .general-bg { background: var(--pastel-green); border-top: 5px solid #4CAF50; }
+
+        .mini-timer { display: inline-flex; gap: 8px; background: white; padding: 8px 18px; border-radius: 50px; margin-bottom: 15px; border: 1px solid #ddd; }
+        .timer-unit span { font-weight: bold; color: #d32f2f; font-size: 1.1rem; display: block; line-height: 1; }
+        .timer-unit p { font-size: 0.6rem; color: #666; }
+
+        .plan-table { width: 100%; border-collapse: collapse; margin: 15px 0; background: white; border-radius: 10px; overflow: hidden; }
+        .plan-table th, .plan-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .plan-table th { background: #f0f0f0; color: var(--primary); }
+        .highlight { color: #d32f2f; font-weight: 600; }
+
+        .money-box { background: rgba(46, 125, 50, 0.08); border: 1px dashed var(--money-color); padding: 12px 18px; border-radius: 15px; margin: 15px 0; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; flex: 1; min-width: 160px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; border: 2px solid var(--primary); }
+        .btn-reg { background: var(--primary); color: white; }
+        .btn-reg.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; cursor: not-allowed; }
+        .btn-info { background: white; color: var(--primary); }
+
+        .faq-card { text-align: center; border: 2px solid var(--secondary); background: #fffcf0; border-radius: 20px; padding: 30px; margin-top: 50px; }
+        footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; }
+
+        @media (max-width: 768px) { .nav-logo span { display: none; } .nav-links a span { display: none; } .nav-links a { padding: 10px; } }
+    </style>
+</head>
+<body>
+
+<div id="loader">
+    <div class="loader-content">
+        <img src="logonobg.jpg" alt="Logo" class="loader-logo">
+        <p class="loader-text">เตรียมข้อมูลระบบ...</p>
+    </div>
+</div>
+
+<nav>
+    <a href="#" class="nav-logo"><i class="fas fa-school"></i> <span>รับสมัครนักเรียน 2569</span></a>
+    <div class="nav-links">
+        <a href="#steps"><i class="fas fa-list-ol"></i> <span>ขั้นตอน</span></a>
+        <a href="#quota"><i class="fas fa-id-card"></i> <span>โควตา</span></a>
+        <a href="#gifted"><i class="fas fa-gem"></i> <span>Gifted</span></a>
+        <a href="#general"><i class="fas fa-users"></i> <span>ทั่วไป</span></a>
+        <a href="qa.html" style="background: var(--secondary); color: var(--primary); font-weight: bold;"><i class="fas fa-comment-dots"></i> <span>Q&A</span></a>
+    </div>
+</nav>
+
+<header>
+    <img src="logonobg.jpg" alt="Logo" class="hero-logo">
+    <h1>ระบบการรับสมัครนักเรียน ปีการศึกษา 2569</h1>
+    <p>โรงเรียนชลบุรี "สุขบท" สพม.ชบ รย</p>
+</header>
+
+<div class="container">
+
+    <section id="steps">
+        <h2 style="text-align:center; color: var(--primary); margin-bottom: 30px;">4 ขั้นตอนง่ายๆ ในการสมัครเรียน</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <i class="fas fa-file-invoice"></i>
+                <h4>อ่านระเบียบการ</h4>
+                <p>เลือกสายการเรียน และดาวน์โหลดไฟล์ระเบียบการอ่านให้ครบถ้วน</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <i class="fas fa-user-edit"></i>
+                <h4>กรอกข้อมูล</h4>
+                <p>กดปุ่ม "สมัครออนไลน์" เพื่อกรอกข้อมูลและอัปโหลดไฟล์เอกสาร</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <i class="fas fa-search-location"></i>
+                <h4>รอตรวจสอบ</h4>
+                <p>เจ้าหน้าที่จะตรวจสอบข้อมูลภายใน 1-3 วัน โปรดติดตามสถานะ</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <i class="fas fa-print"></i>
+                <h4>พิมพ์บัตรสอบ</h4>
+                <p>เมื่อสถานะ "อนุมัติ" ให้พิมพ์บัตรประจำตัวสอบมาในวันสอบ</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quota">
+        <h2 class="section-title"><i class="fas fa-user-check"></i> รอบโควตานักเรียนเดิม (ม.3)</h2>
+        <div class="card quota-bg">
+            <span class="sub-title">ช่วงเวลาสมัคร: 12 - 16 มกราคม 2569</span>
+            <div class="mini-timer" id="timer-quota">
+                <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+            </div>
+            <table class="plan-table">
+                <thead><tr><th>แผนการเรียน ม.4</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
+                <tbody>
+                    <tr><td>สายวิทย์-เทคโนโลยี / พลังสิบ</td><td>ห้องละ 36 คน (<span class="highlight">4</span> ห้อง)</td><td>144 คน</td></tr>
+                    <tr><td>สายบริหาร-ศิลปะ-คอมพิวเตอร์</td><td>ห้องละ 40 คน (<span class="highlight">6</span> ห้อง)</td><td>240 คน</td></tr>
+                </tbody>
+            </table>
+            <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
+            <div class="btn-group">
+                <a href="quota-info.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="#" class="btn btn-reg locked" id="btn-quota">ยังไม่เปิดรับสมัคร</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gifted">
+        <h2 class="section-title"><i class="fas fa-star"></i> รอบห้องเรียนพิเศษ (Gifted)</h2>
+        <div class="card gifted-bg">
+            <span class="sub-title">วันสอบคัดเลือก: 21 กุมภาพันธ์ 2569</span>
+            <div class="mini-timer" id="timer-gifted">
+                <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+            </div>
+            <table class="plan-table">
+                <thead><tr><th>ระดับชั้น</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
+                <tbody>
+                    <tr><td>มัธยมศึกษาปีที่ 1 (Gifted)</td><td>ห้องละ 36 คน (<span class="highlight">1</span> ห้อง)</td><td>36 คน</td></tr>
+                    <tr><td>มัธยมศึกษาปีที่ 4 (Gifted)</td><td>ห้องละ 36 คน (<span class="highlight">1</span> ห้อง)</td><td>36 คน</td></tr>
+                </tbody>
+            </table>
+            <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>9,250 บาท</b></div></div>
+            <div class="btn-group">
+                <a href="gifted-info.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="#" class="btn btn-reg locked" id="btn-gifted">ยังไม่เปิดรับสมัคร</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="general">
+        <h2 class="section-title"><i class="fas fa-users"></i> รอบทั่วไป / EIS</h2>
+        <div class="card general-bg">
+            <span class="sub-title">สมัครออนไลน์: 19 - 23 มีนาคม 2569</span>
+            <div class="mini-timer" id="timer-general">
+                <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+            </div>
+            <table class="plan-table">
+                <thead><tr><th>ระดับชั้น</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
+                <tbody>
+                    <tr><td>มัธยมศึกษาปีที่ 1 (ทั่วไป/EIS)</td><td>ห้องละ 40 คน (<span class="highlight">11</span> ห้อง)</td><td>440 คน</td></tr>
+                </tbody>
+            </table>
+            <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
+            <div class="btn-group">
+                <a href="general-info.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="#" class="btn btn-reg locked" id="btn-general">ยังไม่เปิดรับสมัคร</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="faq-card">
+        <h3><i class="fas fa-question-circle"></i> มีข้อสงสัยเกี่ยวกับการสมัคร?</h3>
+        <p>เราเตรียมคำตอบพบบ่อยกว่า 60 ข้อไว้รอคุณแล้ว</p>
+        <a href="qa.html" class="btn btn-reg" style="background: var(--secondary); color: var(--primary); border: none; width: auto; min-width: 250px; margin: 15px auto 0;">ไปหน้า Q&A ทั้งหมด</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 โรงเรียนชลบุรี "สุขบท" | สพม.ชบ รย</p>
+</footer>
+
+<script>
+    // Effect โหลดหน้าเว็บ
+    window.addEventListener('load', function() {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            document.body.classList.add('loaded');
+            document.querySelectorAll('section').forEach((s, i) => {
+                setTimeout(() => s.classList.add('show'), i * 150);
+            });
+        }, 1200);
+    });
+
+    // ระบบนาฬิกาและปุ่ม
+    function manageAdmission(elementId, btnId, startStr, endStr) {
+        const startDate = new Date(startStr).getTime();
+        const endDate = new Date(endStr).getTime();
+        const container = document.getElementById(elementId);
+        const btn = document.getElementById(btnId);
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            if (now < startDate) {
+                btn.innerHTML = "<i class='fas fa-lock'></i> ยังไม่ถึงเวลาสมัคร";
+                btn.classList.add('locked');
+            } else if (now <= endDate) {
+                btn.innerHTML = "<i class='fas fa-edit'></i> สมัครออนไลน์ที่นี่";
+                btn.classList.remove('locked');
+                btn.href = "https://skb.thaijobjob.com";
+            } else {
+                btn.innerHTML = "ปิดรับสมัครแล้ว";
+                btn.classList.add('locked');
+            }
+
+            const distance = endDate - now;
+            if (distance < 0) { container.innerHTML = "ปิดรับสมัคร"; return; }
+            container.querySelector(".d").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            container.querySelector(".h").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            container.querySelector(".m").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            container.querySelector(".s").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+    }
+
+    manageAdmission("timer-quota", "btn-quota", "January 12, 2026 08:30:00", "January 16, 2026 16:30:00");
+    manageAdmission("timer-gifted", "btn-gifted", "February 8, 2026 08:30:00", "February 12, 2026 16:30:00");
+    manageAdmission("timer-general", "btn-general", "March 19, 2026 08:30:00", "March 23, 2026 16:30:00");
+</script>
+
+</body>
+</html>
