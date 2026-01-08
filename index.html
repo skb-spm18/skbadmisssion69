@@ -11,6 +11,8 @@
             --primary: #003366; --secondary: #FFCC00;
             --pastel-yellow: #FFF9E1; --pastel-blue: #E3F2FD;
             --pastel-green: #E8F5E9; --money-color: #2e7d32;
+            --pastel-purple: #F3E5F5;
+            --highlight-orange: #FF5722;
         }
 
         #loader {
@@ -50,28 +52,21 @@
         section { margin-bottom: 40px; scroll-margin-top: 100px; transform: translateY(15px); opacity: 0; transition: 0.6s ease; }
         section.show { transform: translateY(0); opacity: 1; }
 
-        .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
-        .step-card { background: white; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid #eee; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        .step-num { width: 35px; height: 35px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-weight: bold; }
-        .step-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
-        .step-card h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
-        .step-card p { font-size: 0.85rem; color: #666; }
-
         .card { border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); background: white; border: 1px solid #eee; }
         .quota-bg { background: var(--pastel-yellow); border-top: 5px solid #FBC02D; }
         .gifted-bg { background: var(--pastel-blue); border-top: 5px solid #2196F3; }
         .general-bg { background: var(--pastel-green); border-top: 5px solid #4CAF50; }
+        .special-bg { background: var(--pastel-purple); border-top: 5px solid #9C27B0; }
 
-        .mini-timer { display: inline-flex; gap: 8px; background: white; padding: 8px 18px; border-radius: 50px; margin-bottom: 15px; border: 1px solid #ddd; }
-        .timer-unit span { font-weight: bold; color: #d32f2f; font-size: 1.1rem; display: block; line-height: 1; }
-        .timer-unit p { font-size: 0.6rem; color: #666; }
+        .mini-timer { display: inline-flex; align-items: center; gap: 12px; background: white; padding: 8px 22px; border-radius: 50px; margin-bottom: 15px; border: 1px solid #ddd; }
+        .timer-label { font-size: 0.85rem; color: #555; font-weight: 400; }
+        .timer-units-wrap { display: flex; gap: 8px; }
+        .timer-unit span { font-weight: bold; color: #d32f2f; font-size: 1.1rem; display: block; line-height: 1; text-align: center; }
+        .timer-unit p { font-size: 0.6rem; color: #666; text-align: center; }
 
         .plan-table { width: 100%; border-collapse: collapse; margin: 15px 0; background: white; border-radius: 10px; overflow: hidden; }
         .plan-table th, .plan-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .plan-table th { background: #f0f0f0; color: var(--primary); }
-        .highlight { color: #d32f2f; font-weight: 600; }
-
-        .money-box { background: rgba(46, 125, 50, 0.08); border: 1px dashed var(--money-color); padding: 12px 18px; border-radius: 15px; margin: 15px 0; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
 
         .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; border: 2px solid var(--primary); cursor: pointer; }
         .btn-reg { background: var(--primary); color: white; }
@@ -80,14 +75,31 @@
         .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
         .btn-group .btn { flex: 1; min-width: 140px; }
 
-        .hero-btn-group { margin-top: 25px; display: flex; justify-content: center; }
-        .hero-btn-group .btn { min-width: 250px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); border-color: var(--secondary); background: var(--secondary); color: var(--primary); }
-        .hero-btn-group .btn.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; box-shadow: none; }
+        /* ✨ ข้อที่ 5 สีสะดุดตา */
+        .qa-card-custom { 
+            text-align: center; 
+            background: linear-gradient(135deg, #FF9800, #FF5722); 
+            border-radius: 20px; 
+            padding: 40px; 
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+            border: none;
+        }
+        .qa-card-custom h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .btn-qa-white { 
+            background: white; 
+            color: #FF5722; 
+            border: none; 
+            width: auto; 
+            min-width: 250px; 
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        .btn-qa-white:hover { background: #f0f0f0; transform: scale(1.05); }
 
-        .faq-card { text-align: center; border: 2px solid var(--secondary); background: #fffcf0; border-radius: 20px; padding: 30px; margin-top: 50px; }
         footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; }
 
-        @media (max-width: 768px) { .nav-logo span { display: none; } .nav-links a span { display: none; } .nav-links a { padding: 10px; } header h1 { font-size: 1.6rem; } }
+        @media (max-width: 768px) { .nav-logo span { display: none; } .nav-links a span { display: none; } .nav-links a { padding: 10px; } header h1 { font-size: 1.6rem; } .mini-timer { flex-direction: column; gap: 2px; padding: 10px 20px; border-radius: 20px; } }
     </style>
 </head>
 <body>
@@ -102,11 +114,11 @@
 <nav>
     <a href="#" class="nav-logo"><i class="fas fa-school"></i> <span>รับสมัครนักเรียน 2569</span></a>
     <div class="nav-links">
-        <a href="#steps"><i class="fas fa-list-ol"></i> <span>ขั้นตอน</span></a>
-        <a href="#quota"><i class="fas fa-id-card"></i> <span>โควตา</span></a>
-        <a href="#gifted"><i class="fas fa-gem"></i> <span>Gifted</span></a>
-        <a href="#general"><i class="fas fa-users"></i> <span>ทั่วไป</span></a>
-        <a href="qa.html" style="background: var(--secondary); color: var(--primary); font-weight: bold;"><i class="fas fa-comment-dots"></i> <span>Q&A</span></a>
+        <a href="#quota"><span>1.โควตา</span></a>
+        <a href="#gifted"><span>2.Gifted</span></a>
+        <a href="#general"><span>3.ทั่วไป</span></a>
+        <a href="#special"><span>4.พิเศษ</span></a>
+        <a href="#qa-section"><span>5.Q&A</span></a>
     </div>
 </nav>
 
@@ -114,41 +126,36 @@
     <img src="school-bg.png" alt="Logo" class="hero-logo">
     <h1>ระบบการรับสมัครนักเรียน ปีการศึกษา 2569</h1>
     <p>โรงเรียนชลบุรี "สุขบท" สพม.ชบ รย</p>
-    
-    <div class="hero-btn-group">
-        <a href="#" class="btn btn-reg locked" id="btn-hero">
-            <i class="fas fa-lock"></i> ยังไม่ถึงเวลาสมัคร
-        </a>
-    </div>
 </header>
 
 <div class="container">
 
-    <section id="steps">
-        <h2 style="text-align:center; color: var(--primary); margin-bottom: 30px;">4 ขั้นตอนง่ายๆ ในการสมัครเรียน</h2>
-        <div class="steps-container">
-            <div class="step-card"><div class="step-num">1</div><i class="fas fa-file-invoice"></i><h4>อ่านระเบียบการ</h4><p>ศึกษาข้อมูลจากไฟล์ PDF ให้ครบถ้วน</p></div>
-            <div class="step-card"><div class="step-num">2</div><i class="fas fa-user-edit"></i><h4>กรอกข้อมูล</h4><p>คลิกสมัครออนไลน์และแนบเอกสาร</p></div>
-            <div class="step-card"><div class="step-num">3</div><i class="fas fa-search-location"></i><h4>รอตรวจสอบ</h4><p>รอเจ้าหน้าที่ยืนยันความถูกต้อง</p></div>
-            <div class="step-card"><div class="step-num">4</div><i class="fas fa-print"></i><h4>พิมพ์บัตรสอบ</h4><p>พิมพ์บัตรเพื่อใช้ในวันสอบจริง</p></div>
-        </div>
-    </section>
-
     <section id="quota">
-        <h2 class="section-title"><i class="fas fa-user-check"></i> รอบโควตานักเรียนเดิม (ม.3)</h2>
+        <h2 class="section-title"><i class="fas fa-user-check"></i> 1. รอบโควตานักเรียนเดิม (ม.3)</h2>
         <div class="card quota-bg">
             <span class="sub-title">ช่วงเวลาสมัคร: 12 - 16 มกราคม 2569</span>
             <div class="mini-timer" id="timer-quota">
-                <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                <span class="timer-label"><i class="far fa-clock"></i> เหลือเวลาอีก</span>
+                <div class="timer-units-wrap">
+                    <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                </div>
             </div>
+            
             <table class="plan-table">
-                <thead><tr><th>แผนการเรียน ม.4</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
+                <thead>
+                    <tr><th>แผนการเรียน (ม.4) - ห้องละ 40 คน</th><th style="text-align: center;">จำนวนห้อง</th><th style="text-align: center;">จำนวนรับ</th></tr>
+                </thead>
                 <tbody>
-                    <tr><td>สายวิทย์-เทคโนโลยี / พลังสิบ</td><td>ห้องละ 40 คน (<span class="highlight">4</span> ห้อง)</td><td>160 คน</td></tr>
-                    <tr><td>สายบริหาร-ศิลปะ-คอมพิวเตอร์</td><td>ห้องละ 40 คน (<span class="highlight">6</span> ห้อง)</td><td>240 คน</td></tr>
+                    <tr><td>ห้องเรียนวิทยาศาสตร์พลังสิบ</td><td align="center">1</td><td align="center">40</td></tr>
+                    <tr><td>ห้องเรียนเตรียมวิศวกรรมศาสตร์</td><td align="center">1</td><td align="center">40</td></tr>
+                    <tr><td>ห้องเรียนเตรียมพยาบาลและการแพทย์</td><td align="center">1</td><td align="center">40</td></tr>
+                    <tr><td>ห้องเรียนเตรียมวิทยาการสารสนเทศ</td><td align="center">1</td><td align="center">40</td></tr>
+                    <tr><td>ห้องเรียนเตรียมบริหารธุรกิจ</td><td align="center">2</td><td align="center">80</td></tr>
+                    <tr><td>ห้องเรียนเตรียมสังคมศาสตร์และภาษาศาสตร์ (จีน)</td><td align="center">2</td><td align="center">80</td></tr>
+                    <tr><td>ห้องเรียนเตรียมสังคมศาสตร์และภาษาศาสตร์ (ญี่ปุ่น)</td><td align="center">1</td><td align="center">40</td></tr>
+                    <tr><td>ห้องเรียนเตรียมดนตรีและการแสดง</td><td align="center">1</td><td align="center">40</td></tr>
                 </tbody>
             </table>
-            <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
             <div class="btn-group">
                 <a href="Quato469.pdf" class="btn btn-info" target="_blank">ดูระเบียบการ ม.4</a>
                 <a href="#" class="btn btn-reg locked" id="btn-quota">ยังไม่ถึงเวลาสมัคร</a>
@@ -157,57 +164,117 @@
     </section>
 
     <section id="gifted">
-        <h2 class="section-title"><i class="fas fa-star"></i> รอบห้องเรียนพิเศษ (Gifted)</h2>
+        <h2 class="section-title"><i class="fas fa-gem"></i> 2. รอบห้องเรียนพิเศษ (Gifted)</h2>
         <div class="card gifted-bg">
             <span class="sub-title">ช่วงรับสมัคร: 8 - 12 กุมภาพันธ์ 2569</span>
+            <div style="background: white; border: 1.5px solid #2196F3; padding: 15px; border-radius: 15px; margin: 15px 0; font-size: 0.9rem;">
+                <b style="color: var(--primary);">เงื่อนไขการสมัคร:</b> GPAX และเกรดวิชาวิทย์-คณิต-อังกฤษ <span style="color: #d32f2f; font-weight: 600;">ต้องไม่ต่ำกว่า 3.00</span>
+            </div>
             <div class="mini-timer" id="timer-gifted">
-                <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                <span class="timer-label"><i class="far fa-clock"></i> เหลือเวลาอีก</span>
+                <div class="timer-units-wrap">
+                    <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                </div>
             </div>
             <table class="plan-table">
-                <thead><tr><th>ระดับชั้น</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
                 <tbody>
-                    <tr><td>มัธยมศึกษาปีที่ 1 (Gifted)</td><td>ห้องละ 36 คน (<span class="highlight">1</span> ห้อง)</td><td>36 คน</td></tr>
-                    <tr><td>มัธยมศึกษาปีที่ 4 (Gifted)</td><td>ห้องละ 36 คน (<span class="highlight">1</span> ห้อง)</td><td>36 คน</td></tr>
+                    <tr><td>มัธยมศึกษาปีที่ 1 (Gifted)</td><td align="center">1 ห้อง</td><td align="center">36 คน</td></tr>
+                    <tr><td>มัธยมศึกษาปีที่ 4 (Gifted)</td><td align="center">1 ห้อง</td><td align="center">36 คน</td></tr>
                 </tbody>
             </table>
-            <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>9,250 บาท</b></div></div>
             <div class="btn-group">
-                <a href="GiftedM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ ม.1</a>
-                <a href="GiftedM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ ม.4</a>
+                <a href="GiftedM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="GiftedM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
                 <a href="#" class="btn btn-reg locked" id="btn-gifted">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
 
     <section id="general">
-        <h2 class="section-title"><i class="fas fa-users"></i> รอบทั่วไป / ความสามารถพิเศษ</h2>
+        <h2 class="section-title"><i class="fas fa-users"></i> 3. รอบทั่วไป / EIS</h2>
         <div class="card general-bg">
             <span class="sub-title">สมัครออนไลน์: 19 - 23 มีนาคม 2569</span>
             <div class="mini-timer" id="timer-general">
-                <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                <span class="timer-label"><i class="far fa-clock"></i> เหลือเวลาอีก</span>
+                <div class="timer-units-wrap">
+                    <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                </div>
             </div>
             <table class="plan-table">
-                <thead><tr><th>ระดับชั้น</th><th>จำนวนห้อง</th><th>จำนวนรับ</th></tr></thead>
+                <thead>
+                    <tr><th>แผนการเรียน (ม.1) - ห้องละ 40 คน</th><th style="text-align: center;">จำนวนห้อง</th></tr>
+                </thead>
                 <tbody>
-                    <tr><td>มัธยมศึกษาปีที่ 1 (ทั่วไป/EIS)</td><td>ห้องละ 40 คน (<span class="highlight">11</span> ห้อง)</td><td>440 คน</td></tr>
-                    <tr><td>มัธยมศึกษาปีที่ 4 (ทั่วไป)</td><td colspan="2">เปิดรับตามที่ว่างจากรอบโควตา</td></tr>
+                    <tr><td>ห้องเรียนบูรณาการใช้ภาษาอังกฤษ (EIS)</td><td align="center">1</td></tr>
+                    <tr><td>ห้องเรียนวิทยาศาสตร์พลังสิบ</td><td align="center">1</td></tr>
+                    <tr><td>ห้องเรียนวิทยาศาสตร์-คณิตศาสตร์</td><td align="center">3</td></tr>
+                    <tr><td>ห้องเรียนคณิตศาสตร์-ภาษาอังกฤษ</td><td align="center">2</td></tr>
+                    <tr><td>ห้องเรียนดนตรี</td><td align="center">1</td></tr>
+                    <tr><td>ห้องเรียนทั่วไป</td><td align="center">6</td></tr>
                 </tbody>
             </table>
-            <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
+            <div style="background: #FFF9C4; border: 2px solid #FBC02D; border-radius: 15px; padding: 20px; margin-top: 20px;">
+                <h4 style="color: var(--primary);"><i class="fas fa-bullhorn"></i> มัธยมศึกษาปีที่ 4 (รอบทั่วไป)</h4>
+                <p style="font-size: 0.9rem; margin-top: 5px;">เปิดรับสมัครแผนการเรียนเหมือนรอบโควตา <b>จะรับเพิ่มหลังจากรับรอบโควตาแล้วเท่านั้น</b></p>
+            </div>
             <div class="btn-group">
-                <a href="GenM169.pdf" class="btn btn-info" target="_blank">ระเบียบทั่วไป ม.1</a>
-                <a href="specialM169.pdf" class="btn btn-info" target="_blank">ความสามารถพิเศษ ม.1</a>
-                <a href="GenM469.pdf" class="btn btn-info" target="_blank">ระเบียบทั่วไป ม.4</a>
+                <a href="GenM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
+                <a href="GenM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
                 <a href="#" class="btn btn-reg locked" id="btn-general">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
 
-    <div class="faq-card">
-        <h3><i class="fas fa-question-circle"></i> มีข้อสงสัยเกี่ยวกับการสมัคร?</h3>
-        <p>เราเตรียมคำตอบพบบ่อยกว่า 60 ข้อไว้รอคุณแล้ว</p>
-        <a href="qa.html" class="btn btn-reg" style="background: var(--secondary); color: var(--primary); border: none; width: auto; min-width: 250px; margin: 15px auto 0;">ไปหน้า Q&A ทั้งหมด</a>
-    </div>
+    <section id="special">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> 4. รอบความสามารถพิเศษ</h2>
+        <div class="card special-bg">
+            <div style="background: #e3f2fd; border: 2.5px dashed #003366; padding: 18px; border-radius: 15px; margin-bottom: 20px; text-align: center;">
+                <i class="fas fa-briefcase" style="font-size: 1.8rem; color: #003366; margin-bottom: 8px;"></i>
+                <h4 style="color: #003366; margin-bottom: 5px;">เตรียมความพร้อมก่อนการสมัคร</h4>
+                <p style="font-size: 0.9rem; color: #444;">โปรดเตรียม <b>เกียรติบัตร</b> หรือ <b>Portfolio</b> แสดงความสามารถที่โดดเด่น<br>เพื่อประกอบการพิจารณาในวันทดสอบทักษะ</p>
+            </div>
+
+            <div class="mini-timer" id="timer-special">
+                <span class="timer-label"><i class="far fa-clock"></i> เหลือเวลาอีก</span>
+                <div class="timer-units-wrap">
+                    <div class="timer-unit"><span class="d">00</span><p>วัน</p></div><div class="timer-unit"><span class="h">00</span><p>ชม.</p></div><div class="timer-unit"><span class="m">00</span><p>นาที</p></div><div class="timer-unit"><span class="s">00</span><p>วิ</p></div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;">
+                <div style="background: white; padding: 20px; border-radius: 15px; border-top: 5px solid #9C27B0; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                    <h4 style="color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 8px; margin-bottom: 12px;">มัธยมศึกษาปีที่ 1</h4>
+                    <table style="width: 100%; font-size: 0.9rem;">
+                        <tr><td style="padding: 4px 0;">1. ดนตรีไทย</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">2. ดนตรีสากล</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">3. นาฏศิลป์</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">4. ทัศนศิลป์</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                    </table>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 15px; border-top: 5px solid #9C27B0; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                    <h4 style="color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 8px; margin-bottom: 12px;">มัธยมศึกษาปีที่ 4</h4>
+                    <table style="width: 100%; font-size: 0.9rem;">
+                        <tr><td style="padding: 4px 0;">1. ดนตรีไทย</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">2. ดนตรีสากล</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">3. นาฏศิลป์</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">4. ทัศนศิลป์</td><td align="right">จำนวน <b>5</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">5. ภาษาจีน</td><td align="right">จำนวน <b>10</b> คน</td></tr>
+                        <tr><td style="padding: 4px 0;">6. ภาษาญี่ปุ่น</td><td align="right">จำนวน <b>10</b> คน</td></tr>
+                    </table>
+                </div>
+            </div>
+            
+            <a href="#" class="btn btn-reg locked" id="btn-special" style="margin-top: 25px; width: 100%;">ยังไม่ถึงเวลาสมัคร</a>
+        </div>
+    </section>
+
+    <section id="qa-section">
+        <div class="qa-card-custom">
+            <h3><i class="fas fa-question-circle"></i> 5. คำถามที่พบบ่อย</h3>
+            <a href="qa.html" class="btn btn-qa-white">ไปหน้า Q&A ทั้งหมด</a>
+        </div>
+    </section>
 
 </div>
 
@@ -225,49 +292,28 @@
             document.querySelectorAll('section').forEach((s, i) => {
                 setTimeout(() => s.classList.add('show'), i * 150);
             });
-        }, 1200);
+        }, 1000); // 1.0 วินาที
     });
 
-    function manageAdmission(elementId, btnId, startStr, endStr, isMainBtn = false) {
+    function manageAdmission(elementId, btnId, startStr, endStr) {
         const startDate = new Date(startStr).getTime();
         const endDate = new Date(endStr).getTime();
-        const container = document.getElementById(elementId);
-        const btn = document.getElementById(btnId);
-        const heroBtn = document.getElementById('btn-hero');
-
         setInterval(function() {
             const now = new Date().getTime();
-            let statusText = "";
-            let isLocked = true;
-            let link = "#";
-
-            if (now < startDate) {
-                statusText = "<i class='fas fa-lock'></i> ยังไม่ถึงเวลาสมัคร";
-            } else if (now <= endDate) {
-                statusText = "<i class='fas fa-edit'></i> สมัครออนไลน์ที่นี่";
-                isLocked = false;
-                link = "https://skb.thaijobjob.com";
-            } else {
-                statusText = "ปิดรับสมัครแล้ว";
-            }
-
-            // อัปเดตปุ่มในการ์ด
-            btn.innerHTML = statusText;
-            if(isLocked) btn.classList.add('locked'); else btn.classList.remove('locked');
-            btn.href = link;
-
-            // ถ้าเป็นรอบโควตา (รอบแรก) ให้คุมปุ่ม Header ด้วย
-            if(isMainBtn && heroBtn) {
-                heroBtn.innerHTML = statusText;
-                if(isLocked) heroBtn.classList.add('locked'); else heroBtn.classList.remove('locked');
-                heroBtn.href = link;
-            }
-
+            const btn = document.getElementById(btnId);
+            if (now < startDate) { if(btn) btn.innerHTML = "ยังไม่ถึงเวลาสมัคร"; }
+            else if (now <= endDate) { if(btn) { btn.innerHTML = "สมัครออนไลน์ที่นี่"; btn.classList.remove('locked'); btn.href = "https://skb.thaijobjob.com"; } }
+            else { if(btn) btn.innerHTML = "ปิดรับสมัครแล้ว"; }
+            
             const distance = endDate - now;
-            if (distance < 0) { 
-                container.innerHTML = "<span style='color:#999'>สิ้นสุดการรับสมัครรอบนี้</span>"; 
-                return; 
+            const container = document.getElementById(elementId);
+            if (!container) return;
+            
+            if (distance < 0) {
+                container.innerHTML = "<span style='color:#999; font-size:0.9rem;'>สิ้นสุดการรับสมัครรอบนี้</span>";
+                return;
             }
+            
             container.querySelector(".d").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
             container.querySelector(".h").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
             container.querySelector(".m").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
@@ -275,10 +321,10 @@
         }, 1000);
     }
 
-    // ตั้งค่าเวลาสมัครแต่ละรอบ (ปุ่ม Hero ใน Header จะอิงตามรอบโควตาเป็นหลัก)
-    manageAdmission("timer-quota", "btn-quota", "January 12, 2026 08:30:00", "January 16, 2026 16:30:00", true);
+    manageAdmission("timer-quota", "btn-quota", "January 12, 2026 08:30:00", "January 16, 2026 16:30:00");
     manageAdmission("timer-gifted", "btn-gifted", "February 8, 2026 08:30:00", "February 12, 2026 16:30:00");
     manageAdmission("timer-general", "btn-general", "March 19, 2026 08:30:00", "March 23, 2026 16:30:00");
+    manageAdmission("timer-special", "btn-special", "March 19, 2026 08:30:00", "March 23, 2026 16:30:00");
 </script>
 
 </body>
