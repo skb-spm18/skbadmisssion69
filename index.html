@@ -72,10 +72,11 @@
         .btn-reg { background: var(--primary); color: white; }
         .btn-reg.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; cursor: not-allowed; pointer-events: none; }
         .btn-info { background: white; color: var(--primary); }
+        .btn-ebook { background: white; border-color: #FF9800; color: #FF9800; } /* สไตล์ปุ่ม eBook */
+        .btn-ebook:hover { background: #FFF3E0; }
         .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
         .btn-group .btn { flex: 1; min-width: 140px; }
 
-        /* ✨ ข้อที่ 5 สีสะดุดตา */
         .qa-card-custom { 
             text-align: center; 
             background: linear-gradient(135deg, #FF9800, #FF5722); 
@@ -157,7 +158,8 @@
                 </tbody>
             </table>
             <div class="btn-group">
-                <a href="Quato469.pdf" class="btn btn-info" target="_blank">ดูระเบียบการ ม.4</a>
+                <a href="Quato469.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.4</a>
+                <a href="https://heyzine.com/flip-book/d437fa11cb.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.4</a>
                 <a href="#" class="btn btn-reg locked" id="btn-quota">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
@@ -183,9 +185,13 @@
                 </tbody>
             </table>
             <div class="btn-group">
-                <a href="GiftedM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
-                <a href="GiftedM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
-                <a href="#" class="btn btn-reg locked" id="btn-gifted">ยังไม่ถึงเวลาสมัคร</a>
+                <a href="GiftedM169.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.1</a>
+                <a href="https://heyzine.com/flip-book/2c347737e5.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.1</a>
+                
+                <a href="GiftedM469.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.4</a>
+                <a href="https://heyzine.com/flip-book/8e856465b7.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.4</a>
+                
+                <a href="#" class="btn btn-reg locked" id="btn-gifted" style="width: 100%;">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
@@ -218,9 +224,13 @@
                 <p style="font-size: 0.9rem; margin-top: 5px;">เปิดรับสมัครแผนการเรียนเหมือนรอบโควตา <b>จะรับเพิ่มหลังจากรับรอบโควตาแล้วเท่านั้น</b></p>
             </div>
             <div class="btn-group">
-                <a href="GenM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
-                <a href="GenM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ</a>
-                <a href="#" class="btn btn-reg locked" id="btn-general">ยังไม่ถึงเวลาสมัคร</a>
+                <a href="GenM169.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.1</a>
+                <a href="https://heyzine.com/flip-book/693fa54e27.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.1</a>
+                
+                <a href="GenM469.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.4</a>
+                <a href="https://heyzine.com/flip-book/5ccd97fe9e.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.4</a>
+                
+                <a href="#" class="btn btn-reg locked" id="btn-general" style="width: 100%;">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
@@ -265,7 +275,11 @@
                 </div>
             </div>
             
-            <a href="#" class="btn btn-reg locked" id="btn-special" style="margin-top: 25px; width: 100%;">ยังไม่ถึงเวลาสมัคร</a>
+            <div class="btn-group">
+                <a href="SpecM169.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการสมัคร ม.1</a>
+                <a href="SpecM469.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการสมัคร ม.4</a>
+                <a href="#" class="btn btn-reg locked" id="btn-special">ยังไม่ถึงเวลาสมัคร</a>
+            </div>
         </div>
     </section>
 
@@ -292,7 +306,7 @@
             document.querySelectorAll('section').forEach((s, i) => {
                 setTimeout(() => s.classList.add('show'), i * 150);
             });
-        }, 1000); // 1.0 วินาที
+        }, 1000);
     });
 
     function manageAdmission(elementId, btnId, startStr, endStr) {
