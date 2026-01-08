@@ -32,9 +32,16 @@
 
         nav { background: var(--primary); padding: 0.8rem 5%; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .nav-logo { font-weight: 600; font-size: 1rem; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 8px; }
+        .nav-links { display: flex; gap: 8px; align-items: center; }
         .nav-links a { color: white; text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 50px; background: rgba(255,255,255,0.1); transition: 0.3s; }
         .nav-links a:hover { background: var(--secondary); color: var(--primary); transform: translateY(-2px); }
+        
+        /* สไตล์ปุ่มประกาศผลสีเหลืองทองที่เพิ่มใหม่ */
+        .nav-links a.btn-result-nav {
+            background: var(--secondary);
+            color: var(--primary);
+            font-weight: 600;
+        }
 
         header { 
             background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), url('school-bg.png'); 
@@ -72,30 +79,18 @@
         .btn-reg { background: var(--primary); color: white; }
         .btn-reg.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; cursor: not-allowed; pointer-events: none; }
         .btn-info { background: white; color: var(--primary); }
-        .btn-ebook { background: white; border-color: #FF9800; color: #FF9800; } /* สไตล์ปุ่ม eBook */
+        .btn-ebook { background: white; border-color: #FF9800; color: #FF9800; }
         .btn-ebook:hover { background: #FFF3E0; }
         .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
         .btn-group .btn { flex: 1; min-width: 140px; }
 
         .qa-card-custom { 
-            text-align: center; 
-            background: linear-gradient(135deg, #FF9800, #FF5722); 
-            border-radius: 20px; 
-            padding: 40px; 
-            color: white;
-            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
-            border: none;
+            text-align: center; background: linear-gradient(135deg, #FF9800, #FF5722); 
+            border-radius: 20px; padding: 40px; color: white;
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3); border: none;
         }
         .qa-card-custom h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .btn-qa-white { 
-            background: white; 
-            color: #FF5722; 
-            border: none; 
-            width: auto; 
-            min-width: 250px; 
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
+        .btn-qa-white { background: white; color: #FF5722; border: none; width: auto; min-width: 250px; margin: 0 auto; font-size: 1.1rem; }
         .btn-qa-white:hover { background: #f0f0f0; transform: scale(1.05); }
 
         footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; }
@@ -120,6 +115,7 @@
         <a href="#general"><span>3.ทั่วไป</span></a>
         <a href="#special"><span>4.พิเศษ</span></a>
         <a href="#qa-section"><span>5.Q&A</span></a>
+        <a href="results.html" class="btn-result-nav"><i class="fas fa-bullhorn"></i> <span>ประกาศผล</span></a>
     </div>
 </nav>
 
@@ -187,10 +183,8 @@
             <div class="btn-group">
                 <a href="GiftedM169.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.1</a>
                 <a href="https://heyzine.com/flip-book/2c347737e5.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.1</a>
-                
                 <a href="GiftedM469.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.4</a>
                 <a href="https://heyzine.com/flip-book/8e856465b7.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.4</a>
-                
                 <a href="#" class="btn btn-reg locked" id="btn-gifted" style="width: 100%;">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
@@ -226,10 +220,8 @@
             <div class="btn-group">
                 <a href="GenM169.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.1</a>
                 <a href="https://heyzine.com/flip-book/693fa54e27.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.1</a>
-                
                 <a href="GenM469.pdf" class="btn btn-info" target="_blank"><i class="fas fa-file-pdf"></i> ระเบียบการ ม.4</a>
                 <a href="https://heyzine.com/flip-book/5ccd97fe9e.html" class="btn btn-ebook" target="_blank"><i class="fas fa-book-open"></i> e-Book ม.4</a>
-                
                 <a href="#" class="btn btn-reg locked" id="btn-general" style="width: 100%;">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
