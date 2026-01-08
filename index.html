@@ -13,7 +13,6 @@
             --pastel-green: #E8F5E9; --money-color: #2e7d32;
         }
 
-        /* --- ✨ 1. Speed Up Loader (1.2s) --- */
         #loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: white; z-index: 9999;
@@ -21,7 +20,7 @@
             transition: opacity 0.5s ease-out, visibility 0.5s;
         }
         .loader-content { text-align: center; animation: fadeInOut 1.5s infinite; }
-        .loader-logo { width: 90px; }
+        .loader-logo { width: 90px; height: auto; }
         .loader-text { margin-top: 15px; color: var(--primary); font-size: 0.9rem; }
         @keyframes fadeInOut { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
@@ -35,9 +34,17 @@
         .nav-links a { color: white; text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 50px; background: rgba(255,255,255,0.1); transition: 0.3s; }
         .nav-links a:hover { background: var(--secondary); color: var(--primary); transform: translateY(-2px); }
 
-        header { background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), url('school-bg.jpg'); background-size: cover; padding: 50px 5%; text-align: center; color: white; }
-        .hero-logo { width: 85px; margin-bottom: 10px; }
-        header h1 { font-size: 2rem; color: var(--secondary); }
+        header { 
+            background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), url('school-bg.png'); 
+            background-size: cover; 
+            background-position: center;
+            padding: 60px 5%; 
+            text-align: center; 
+            color: white; 
+        }
+        .hero-logo { width: 85px; height: auto; margin-bottom: 10px; }
+        header h1 { font-size: 2rem; color: var(--secondary); margin-bottom: 5px; }
+        header p { font-weight: 200; font-size: 1.1rem; }
 
         .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
         section { margin-bottom: 40px; scroll-margin-top: 100px; transform: translateY(15px); opacity: 0; transition: 0.6s ease; }
@@ -66,23 +73,28 @@
 
         .money-box { background: rgba(46, 125, 50, 0.08); border: 1px dashed var(--money-color); padding: 12px 18px; border-radius: 15px; margin: 15px 0; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
 
-        .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; flex: 1; min-width: 140px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; border: 2px solid var(--primary); }
+        .btn { padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; border: 2px solid var(--primary); cursor: pointer; }
         .btn-reg { background: var(--primary); color: white; }
-        .btn-reg.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; cursor: not-allowed; }
+        .btn-reg.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; cursor: not-allowed; pointer-events: none; }
         .btn-info { background: white; color: var(--primary); }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .btn-group .btn { flex: 1; min-width: 140px; }
+
+        .hero-btn-group { margin-top: 25px; display: flex; justify-content: center; }
+        .hero-btn-group .btn { min-width: 250px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); border-color: var(--secondary); background: var(--secondary); color: var(--primary); }
+        .hero-btn-group .btn.locked { background: #bdc3c7; border-color: #bdc3c7; color: white; box-shadow: none; }
 
         .faq-card { text-align: center; border: 2px solid var(--secondary); background: #fffcf0; border-radius: 20px; padding: 30px; margin-top: 50px; }
         footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; }
 
-        @media (max-width: 768px) { .nav-logo span { display: none; } .nav-links a span { display: none; } .nav-links a { padding: 10px; } }
+        @media (max-width: 768px) { .nav-logo span { display: none; } .nav-links a span { display: none; } .nav-links a { padding: 10px; } header h1 { font-size: 1.6rem; } }
     </style>
 </head>
 <body>
 
 <div id="loader">
     <div class="loader-content">
-        <img src="logonobg.png" alt="Logo" class="loader-logo">
+        <img src="school-bg.png" alt="Logo" class="loader-logo">
         <p class="loader-text">เตรียมข้อมูลระบบ...</p>
     </div>
 </div>
@@ -99,9 +111,15 @@
 </nav>
 
 <header>
-    <img src="logonobg.png" alt="Logo" class="hero-logo">
+    <img src="school-bg.png" alt="Logo" class="hero-logo">
     <h1>ระบบการรับสมัครนักเรียน ปีการศึกษา 2569</h1>
     <p>โรงเรียนชลบุรี "สุขบท" สพม.ชบ รย</p>
+    
+    <div class="hero-btn-group">
+        <a href="#" class="btn btn-reg locked" id="btn-hero">
+            <i class="fas fa-lock"></i> ยังไม่ถึงเวลาสมัคร
+        </a>
+    </div>
 </header>
 
 <div class="container">
@@ -133,7 +151,7 @@
             <div class="money-box"><i class="fas fa-wallet"></i><div>ค่าใช้จ่ายแรกเข้า: <b>3,550 - 6,250 บาท</b></div></div>
             <div class="btn-group">
                 <a href="Quato469.pdf" class="btn btn-info" target="_blank">ดูระเบียบการ ม.4</a>
-                <a href="#" class="btn btn-reg locked" id="btn-quota">ยังไม่เปิดรับสมัคร</a>
+                <a href="#" class="btn btn-reg locked" id="btn-quota">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
@@ -156,7 +174,7 @@
             <div class="btn-group">
                 <a href="GiftedM169.pdf" class="btn btn-info" target="_blank">ระเบียบการ ม.1</a>
                 <a href="GiftedM469.pdf" class="btn btn-info" target="_blank">ระเบียบการ ม.4</a>
-                <a href="#" class="btn btn-reg locked" id="btn-gifted">ยังไม่เปิดรับสมัคร</a>
+                <a href="#" class="btn btn-reg locked" id="btn-gifted">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
@@ -180,7 +198,7 @@
                 <a href="GenM169.pdf" class="btn btn-info" target="_blank">ระเบียบทั่วไป ม.1</a>
                 <a href="specialM169.pdf" class="btn btn-info" target="_blank">ความสามารถพิเศษ ม.1</a>
                 <a href="GenM469.pdf" class="btn btn-info" target="_blank">ระเบียบทั่วไป ม.4</a>
-                <a href="#" class="btn btn-reg locked" id="btn-general">ยังไม่เปิดรับสมัคร</a>
+                <a href="#" class="btn btn-reg locked" id="btn-general">ยังไม่ถึงเวลาสมัคร</a>
             </div>
         </div>
     </section>
@@ -210,28 +228,46 @@
         }, 1200);
     });
 
-    function manageAdmission(elementId, btnId, startStr, endStr) {
+    function manageAdmission(elementId, btnId, startStr, endStr, isMainBtn = false) {
         const startDate = new Date(startStr).getTime();
         const endDate = new Date(endStr).getTime();
         const container = document.getElementById(elementId);
         const btn = document.getElementById(btnId);
+        const heroBtn = document.getElementById('btn-hero');
 
         setInterval(function() {
             const now = new Date().getTime();
+            let statusText = "";
+            let isLocked = true;
+            let link = "#";
+
             if (now < startDate) {
-                btn.innerHTML = "<i class='fas fa-lock'></i> ยังไม่ถึงเวลาสมัคร";
-                btn.classList.add('locked');
+                statusText = "<i class='fas fa-lock'></i> ยังไม่ถึงเวลาสมัคร";
             } else if (now <= endDate) {
-                btn.innerHTML = "<i class='fas fa-edit'></i> สมัครออนไลน์ที่นี่";
-                btn.classList.remove('locked');
-                btn.href = "https://skb.thaijobjob.com";
+                statusText = "<i class='fas fa-edit'></i> สมัครออนไลน์ที่นี่";
+                isLocked = false;
+                link = "https://skb.thaijobjob.com";
             } else {
-                btn.innerHTML = "ปิดรับสมัครแล้ว";
-                btn.classList.add('locked');
+                statusText = "ปิดรับสมัครแล้ว";
+            }
+
+            // อัปเดตปุ่มในการ์ด
+            btn.innerHTML = statusText;
+            if(isLocked) btn.classList.add('locked'); else btn.classList.remove('locked');
+            btn.href = link;
+
+            // ถ้าเป็นรอบโควตา (รอบแรก) ให้คุมปุ่ม Header ด้วย
+            if(isMainBtn && heroBtn) {
+                heroBtn.innerHTML = statusText;
+                if(isLocked) heroBtn.classList.add('locked'); else heroBtn.classList.remove('locked');
+                heroBtn.href = link;
             }
 
             const distance = endDate - now;
-            if (distance < 0) { container.innerHTML = "ปิดรับสมัคร"; return; }
+            if (distance < 0) { 
+                container.innerHTML = "<span style='color:#999'>สิ้นสุดการรับสมัครรอบนี้</span>"; 
+                return; 
+            }
             container.querySelector(".d").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
             container.querySelector(".h").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
             container.querySelector(".m").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
@@ -239,11 +275,11 @@
         }, 1000);
     }
 
-    manageAdmission("timer-quota", "btn-quota", "January 12, 2026 08:30:00", "January 16, 2026 16:30:00");
+    // ตั้งค่าเวลาสมัครแต่ละรอบ (ปุ่ม Hero ใน Header จะอิงตามรอบโควตาเป็นหลัก)
+    manageAdmission("timer-quota", "btn-quota", "January 12, 2026 08:30:00", "January 16, 2026 16:30:00", true);
     manageAdmission("timer-gifted", "btn-gifted", "February 8, 2026 08:30:00", "February 12, 2026 16:30:00");
     manageAdmission("timer-general", "btn-general", "March 19, 2026 08:30:00", "March 23, 2026 16:30:00");
 </script>
 
 </body>
 </html>
-
