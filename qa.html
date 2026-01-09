@@ -3,221 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q&A รวมถาม-ตอบ ประเด็นร้อน | โรงเรียนชลบุรี "สุขบท"</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>ถาม-ตอบ (Q&A) การรับสมัครนักเรียนปี พ.ศ. 2569 | โรงเรียนชลบุรี "สุขบท"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #004e92; --secondary: #FFD700;
-            --bg: #eef2f3; 
-            --card-front: #E3F2FD; /* สีฟ้าอ่อน */
-            --card-back: #E8F5E9;  /* สีเขียวอ่อน */
-            --danger: #ff4b2b;
-        }
+        :root { --primary: #003366; --secondary: #FFCC00; --bg: #f8fafc; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kanit', sans-serif; }
-        
-        /* Fade In ตอนโหลดหน้า 1 วินาที */
-        body { 
-            background-color: var(--bg); color: #2C3E50; padding-bottom: 50px; overflow-x: hidden;
-            animation: fadeInPage 1s ease-in-out;
-        }
-        @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+        body { background: var(--bg); color: #333; line-height: 1.6; }
 
-        /* Nav Bar พร้อมช่องค้นหา */
-        nav {
-            background: linear-gradient(to right, #000428, #004e92);
-            padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .nav-logo { color: white; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
-        .search-container { flex-grow: 1; max-width: 500px; margin-left: 20px; position: relative; }
-        .search-container input { width: 100%; padding: 10px 40px; border-radius: 50px; border: none; outline: none; font-size: 0.9rem; }
-        .search-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888; }
-        .btn-back { color: white; text-decoration: none; font-size: 0.85rem; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 50px; margin-left: 15px; transition: 0.3s; }
-        .btn-back:hover { background: var(--secondary); color: var(--primary); }
+        .sticky-contact { background: var(--secondary); padding: 12px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .sticky-contact a { color: var(--primary); font-weight: 600; text-decoration: none; border: 1.5px solid var(--primary); padding: 5px 15px; border-radius: 50px; }
 
-        header {
-            background: linear-gradient(135deg, #004e92 0%, #000428 100%);
-            padding: 40px 5% 60px; text-align: center; color: white;
-            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
-        }
-        header h1 { font-size: 2.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); color: var(--secondary); }
+        header { background: var(--primary); color: white; padding: 40px 5% 60px; text-align: center; }
+        header h1 { color: var(--secondary); font-size: 2rem; margin-bottom: 10px; }
 
-        .filter-group { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: -25px; margin-bottom: 30px; }
-        .filter-btn {
-            padding: 10px 20px; border-radius: 50px; border: none; background: white; color: var(--primary); 
-            cursor: pointer; font-size: 0.85rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .filter-btn.active, .filter-btn:hover { background: var(--secondary); color: var(--primary); transform: translateY(-3px); }
+        .search-container { max-width: 800px; margin: -30px auto 30px; padding: 0 20px; }
+        .search-box { background: var(--white); display: flex; align-items: center; padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .search-box input { border: none; outline: none; width: 100%; font-size: 1.1rem; margin-left: 10px; }
 
-        .container { 
-            max-width: 1200px; margin: 0 auto; padding: 0 20px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
-        }
+        .timeline { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 40px; top: 0; bottom: 0; width: 4px; background: #e2e8f0; border-radius: 2px; }
 
-        .flashcard { perspective: 1000px; height: 260px; cursor: pointer; }
-        .card-inner {
-            position: relative; width: 100%; height: 100%; text-align: center;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d;
-        }
-        .flashcard.flipped .card-inner { transform: rotateY(180deg); }
+        .timeline-section { position: relative; margin-bottom: 50px; }
+        .section-icon { position: absolute; left: 22px; top: 0; width: 40px; height: 40px; background: var(--primary); color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; border: 4px solid var(--bg); }
+        .section-title { margin-left: 80px; font-size: 1.4rem; color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid var(--secondary); display: inline-block; padding-bottom: 5px; }
 
-        .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px;
-            border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.3);
-        }
-        .card-front { background: var(--card-front); color: var(--primary); }
-        .card-front i { margin-bottom: 15px; font-size: 2.5rem; color: #0277BD; }
-        .card-front p { font-weight: 600; font-size: 1.1rem; line-height: 1.5; }
-        
-        .card-back { background: var(--card-back); color: #1B5E20; transform: rotateY(180deg); font-size: 0.95rem; border: 3px solid #66BB6A; line-height: 1.7; text-align: left; }
-        .highlight { color: var(--danger); font-weight: 600; }
+        .qa-card { background: var(--white); margin-left: 80px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; transition: 0.3s; }
+        .qa-card:hover { border-color: var(--secondary); transform: translateX(5px); }
+        .qa-q { padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 400; color: #2d3748; }
+        .qa-a { padding: 0 25px; max-height: 0; overflow: hidden; transition: 0.4s ease-out; background: #fffcf0; font-size: 0.95rem; color: #4a5568; }
+        .qa-card.active .qa-a { padding: 20px 25px; max-height: 2000px; border-top: 1px solid #fef3c7; }
+        .qa-card.active .qa-q { font-weight: 600; color: var(--primary); }
 
-        .no-result { grid-column: 1 / -1; text-align: center; color: #888; padding: 50px; display: none; }
-        footer { text-align: center; margin-top: 50px; padding: 30px; background: white; color: #888; }
+        .highlight { color: #e53e3e; font-weight: 600; }
+
+        @media (max-width: 600px) {
+            .timeline::before { left: 20px; }
+            .section-icon { left: 2px; }
+            .section-title, .qa-card { margin-left: 45px; }
+            header h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="#" class="nav-logo"><i class="fas fa-question-circle"></i> Q&A</a>
-    <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="พิมพ์ประเด็นที่คุณสงสัยที่นี่...">
-    </div>
-    <a href="index.html" class="btn-back">กลับหน้าหลัก</a>
-</nav>
+<div class="sticky-contact">
+    <i class="fas fa-phone-alt"></i> ติดต่อสอบถามห้องวิชาการ: <a href="tel:0965964728">096-596-4728</a>
+</div>
 
 <header>
-    <h1>Q&A รวมถาม-ตอบ ประเด็นร้อน</h1>
-    <p style="margin-top:10px; opacity:0.8;">ข้อมูลการรับสมัครนักเรียนใหม่ โรงเรียนชลบุรี "สุขบท" ปี 2569</p>
+    <h1>ถาม-ตอบ (Q&A) การรับสมัครนักเรียนปี พ.ศ. 2569 </h1>
+    <p>รวมข้อมูลละเอียดการสมัครครบทุกขั้นตอนการรับสมัคร</p>
 </header>
 
-<div class="control-panel" style="margin-top: 20px;">
-    <div class="filter-group">
-        <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
-        <button class="filter-btn" data-filter="sys">ระบบ/สมัคร</button>
-        <button class="filter-btn" data-filter="doc">เอกสาร</button>
-        <button class="filter-btn" data-filter="exam">ตารางสอบ/วิชา</button>
-        <button class="filter-btn" data-filter="mon">เงิน/สวัสดิการ</button>
+<div class="search-container">
+    <div class="search-box">
+        <i class="fas fa-search" style="color:#a0aec0"></i>
+        <input type="text" id="searchInput" placeholder="พิมพ์สิ่งที่ต้องการค้นหา เช่น 'ค่าเทอม', 'มอบตัว', 'ม.1'..." onkeyup="filterQA()">
     </div>
 </div>
 
-<div class="container" id="qaGrid">
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-laptop-code"></i><p>ถ้าไม่สามารถสมัครออนไลน์ได้จริง ๆ ต้องทำอย่างไร?</p></div><div class="card-back"><p>หากติดขัดการสมัครออนไลน์ <span class="highlight">จะมีจุดรับสมัครช่วยเหลือ ณ โรงอาหารของโรงเรียน ใน 2 วันสุดท้าย</span> ของระยะเวลาการสมัครแต่ละประเภทครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-file-upload"></i><p>ขนาดไฟล์และนามสกุลที่ใช้สมัครออนไลน์?</p></div><div class="card-back"><p>1. <span class="highlight">ขนาดไฟล์ไม่เกิน 1 MB</span> ต่อไฟล์<br>2. รองรับนามสกุล <span class="highlight">PNG, JPEG, JPG และ PDF</span> เท่านั้นครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-bus"></i><p>มีรถรับ-ส่งนักเรียนบริการไหม?</p></div><div class="card-back"><p>โรงเรียน <span class="highlight">ไม่มีรถรับส่งโดยตรง</span> ครับ ผู้ปกครองต้องประสานรถเอกชนเอง หรือขอข้อมูลเพิ่มที่ **ฝ่ายปกครอง** ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-utensils"></i><p>ในวันที่มาสอบ โรงเรียนมีอาหารจำหน่ายไหม?</p></div><div class="card-back"><p>มีบริการ 2 จุดหลักคือ <span class="highlight">ร้านค้าสวัสดิการ และโรงอาหาร</span> พร้อมให้บริการทั้งผู้ปกครองและนักเรียนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-book-open"></i><p>สามารถซื้อชุดนักเรียน สมุด และอุปกรณ์ได้ที่ไหน?</p></div><div class="card-back"><p>ซื้อได้ที่ <span class="highlight">ร้านค้าสวัสดิการ (สหกรณ์)</span> ในวันรายงานตัวและมอบตัวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-calendar-alt"></i><p>ตารางสอบ รอบห้องเรียนพิเศษ (Gifted)</p></div><div class="card-back"><p>- รับสมัคร: 8-12 ก.พ. 69<br>- สอบ: 22 ก.พ. 69 (วิทย์, คณิต, อังกฤษ)<br>- ประกาศผล: 27 ก.พ. 69<br>- มอบตัว: 5 เม.ย. 69</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-calendar-day"></i><p>ตารางสอบ รอบห้องเรียนปกติ / EIS</p></div><div class="card-back"><p>- รับสมัคร: 19-23 มี.ค. 69<br>- สอบ ม.1: 28 มี.ค. 69<br>- สอบ ม.4: 29 มี.ค. 69<br>- ประกาศผล: 1-2 เม.ย. 69</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-paint-brush"></i><p>ตารางสอบ รอบความสามารถพิเศษ</p></div><div class="card-back"><p>- รับสมัคร: 19-20 มี.ค. 69<br>- สอบปฏิบัติ: 24 มี.ค. (ม.1) / 25 มี.ค. (ม.4)<br>- ประกาศผล: 26-27 มี.ค. 69<br>- มอบตัว: 4-5 เม.ย. 69</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-list-check"></i><p>วิชาที่ใช้ในการสอบคัดเลือกแต่ละรอบ?</p></div><div class="card-back"><p>- <span class="highlight">Gifted:</span> วิทย์, คณิต, อังกฤษ<br>- <span class="highlight">รอบปกติ:</span> 5 วิชาหลัก<br>- <span class="highlight">ความสามารถพิเศษ:</span> ทดสอบทักษะปฏิบัติ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-wallet"></i><p>วิธีการชำระเงินสามารถทำได้อย่างไรบ้าง?</p></div><div class="card-back"><p>ชำระในวันมอบตัวโดย: 1. <span class="highlight">โอนผ่านธนาคารโรงเรียน</span> (รอเลขบัญชีวันประกาศผล) 2. <span class="highlight">ชำระเงินสด</span> ณ จุดลงทะเบียนครับ</p></div></div></div>
+<div class="timeline">
+    
+    <div class="timeline-section">
+        <div class="section-icon"><i class="fas fa-laptop-code"></i></div>
+        <h2 class="section-title">ระยะที่ 1: เตรียมตัวและระบบออนไลน์</h2>
+        <div class="qa-card"><div class="qa-q">1. เว็บไซต์หลักที่ใช้ในการสมัครเรียนคือลิงก์ใด? <i class="fas fa-chevron-down"></i></div><div class="qa-a">สมัครผ่านระบบออนไลน์ที่เว็บไซต์ <a href="https://skb.thaijobjob.com" target="_blank">https://skb.thaijobjob.com</a></div></div>
+        <div class="qa-card"><div class="qa-q">2. ทำไมควรใช้ Google Chrome ในการสมัคร? <i class="fas fa-chevron-down"></i></div><div class="qa-a"><span class="highlight">เพื่อความเสถียรที่สุด</span> และป้องกันปัญหาทางเทคนิคครับ</div></div>
+        <div class="qa-card"><div class="qa-q">3. ใช้โทรศัพท์มือถือสมัครได้หรือไม่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">สมัครได้ครับ แต่แนะนำให้เปิดผ่าน Browser <span class="highlight">Google Chrome</span> ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">4. สำเนาบัตรประชาชนนักเรียนจำเป็นไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">จำเป็นมากครับ เป็นเอกสารที่ต้องแนบเพิ่มในปีนี้ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">5. ไฟล์ ปพ.1 ที่ใช้สมัคร ต้องเป็นฉบับจริงหรือสำเนา? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ใช้ไฟล์ที่สแกนหรือถ่ายจากฉบับจริงที่มีตราโรงเรียนชัดเจนครับ</div></div>
+        <div class="qa-card"><div class="qa-q">6. ทะเบียนบ้านที่ใช้สมัคร ต้องใช้หน้าไหนบ้าง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ใช้หน้าที่มีที่อยู่ และหน้าที่มีชื่อของนักเรียนครับ</div></div>
+        <div class="qa-card"><div class="qa-q">7. ขนาดไฟล์ "ไม่เกิน 1 MB" คือต่อหนึ่งไฟล์หรือรวมทั้งหมด? <i class="fas fa-chevron-down"></i></div><div class="qa-a"><span class="highlight">ต่อหนึ่งไฟล์ครับ</span> เช่น รูปถ่าย 1MB, ปพ.1 1MB แยกกันครับ</div></div>
+        <div class="qa-card"><div class="qa-q">8. ถ้ารูปถ่ายเอกสารแล้วขนาดไฟล์ใหญ่เกิน 1 MB ต้องทำอย่างไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องทำการลดขนาดไฟล์ (Resize) ก่อนอัปโหลดครับ</div></div>
+        <div class="qa-card"><div class="qa-q">9. ระบบรองรับนามสกุลไฟล์ชนิดใดบ้าง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">รองรับไฟล์ <span class="highlight">PNG, JPEG, JPG และ PDF</span> ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">10. รูปถ่ายนักเรียนต้องใส่ชุดอะไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องเป็นรูปชุดนักเรียนจากโรงเรียนเดิมที่ถูกต้องตามระเบียบครับ</div></div>
+        <div class="qa-card"><div class="qa-q">11. หากอัปโหลดเอกสารผิด สามารถแก้ไขได้ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">แก้ไขได้ก่อนกด "ยืนยันการสมัคร" หรือภายในช่วงวันรับสมัครครับ</div></div>
+        <div class="qa-card"><div class="qa-q">12. ระบบเปิดให้สมัครได้ตลอด 24 ชั่วโมงใช่ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ใช่ครับ ระบบเปิด 24 ชั่วโมงในช่วงวันรับสมัครครับ</div></div>
+    </div>
 
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-mobile"></i><p>สมัครผ่านมือถือได้ไหม?</p></div><div class="card-back"><p>ได้ครับ ระบบรองรับสมาร์ทโฟนทุกรุ่น แนะนำใช้ Chrome หรือ Safari ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-key"></i><p>ลืมรหัสผ่านทำอย่างไร?</p></div><div class="card-back"><p>กดปุ่ม "ลืมรหัสผ่าน" ระบบจะส่งลิงก์ตั้งใหม่ไปให้ทางอีเมลครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-edit"></i><p>ใส่เลขบัตรประชาชนผิด แก้ได้ไหม?</p></div><div class="card-back"><p>ข้อมูลหลักนี้แก้เองไม่ได้ครับ ต้องแจ้งแอดมินเพจโรงเรียนเพื่อช่วยเหลือ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-history"></i><p>ระบบขึ้น "รอตรวจสอบ" นานไหม?</p></div><div class="card-back"><p>ปกติเจ้าหน้าที่จะตรวจสอบภายใน 1-3 วันทำการครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-print"></i><p>พิมพ์บัตรสอบที่ไหน?</p></div><div class="card-back"><p>เมื่อสถานะ "อนุมัติ" จะมีปุ่มให้พิมพ์บัตรสอบในหน้าประวัติการสมัครครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-file-image"></i><p>รูปถ่ายใช้พื้นหลังสีอะไร?</p></div><div class="card-back"><p>รูปชุดนักเรียน หน้าตรง พื้นหลังสีฟ้า ไฟล์ .JPG หรือ .PNG ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-camera"></i><p>ใช้มือถือถ่ายรูปเอกสารได้ไหม?</p></div><div class="card-back"><p>ได้ครับ แต่ต้องชัดเจน เห็นครบทั้งแผ่นและไม่เบลอครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-file-pdf"></i><p>ปพ.1 ยังไม่ได้ฉบับจบ ใช้ใบไหนแทน?</p></div><div class="card-back"><p>ใช้ใบรับรองเกรด (ปพ.7) หรือ ปพ.1 ฉบับ 5 ภาคเรียนแทนได้ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-signature"></i><p>ต้องเซ็นสำเนาถูกต้องไหม?</p></div><div class="card-back"><p>ควรเซ็นรับรองสำเนาถูกต้องในเอกสารทุกฉบับก่อนอัปโหลดครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-upload"></i><p>ไฟล์ใหญ่เกินไปอัปไม่ขึ้น?</p></div><div class="card-back"><p>แนะนำให้ใช้แอปย่อขนาดรูป หรือถ่ายใหม่ด้วยความละเอียดปานกลางครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-pen-nib"></i><p>อุปกรณ์ที่ห้ามเข้าห้องสอบ?</p></div><div class="card-back"><p>มือถือ, นาฬิกาดิจิทัล, เครื่องคิดเลข และอุปกรณ์สื่อสารทุกชนิด</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-tshirt"></i><p>วันสอบต้องใส่ชุดอะไร?</p></div><div class="card-back"><p>ชุดนักเรียนเดิมของสถานศึกษาปัจจุบันให้เรียบร้อยครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-clock"></i><p>มาสายเข้าสอบได้ไหม?</p></div><div class="card-back"><p>หากสายเกิน 15 นาทีหลังจากเริ่มสอบ จะไม่มีสิทธิ์เข้าสอบครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-id-card"></i><p>บัตรประชาชนหายใช้อะไรแทน?</p></div><div class="card-back"><p>ใช้ใบขับขี่ พาสปอร์ต หรือบัตรที่มีรูปถ่ายและเลขบัตรชัดเจนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-ban"></i><p>ทุจริตสอบมีโทษอย่างไร?</p></div><div class="card-back"><p>ปรับตกและตัดสิทธิ์การคัดเลือกทันทีทุกกรณีครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-qrcode"></i><p>ชำระค่าเทอมช่องทางไหน?</p></div><div class="card-back"><p>Scan QR Code ผ่าน App ธนาคารในวันมอบตัวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-wallet"></i><p>ค่าเทอมผ่อนชำระได้ไหม?</p></div><div class="card-back"><p>ปรึกษาฝ่ายการเงินเพื่อขอรับคำแนะนำการผ่อนผันในวันมอบตัวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-award"></i><p>มีทุนการศึกษาไหม?</p></div><div class="card-back"><p>มีทุนเรียนดีและทุนสนับสนุนผู้ยากไร้ ติดต่อได้ที่ฝ่ายแนะแนวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-history"></i><p>สละสิทธิ์ขอเงินคืนได้ไหม?</p></div><div class="card-back"><p>ตามระเบียบราชการ ไม่สามารถคืนเงินค่าธรรมเนียมได้ทุกกรณีครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-shield-alt"></i><p>ข้อมูลส่วนตัวปลอดภัยไหม?</p></div><div class="card-back"><p>โรงเรียนรักษาข้อมูลตาม PDPA ใช้เพื่อการรับสมัครเท่านั้นครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-bus"></i><p>มีรถรับส่งนักเรียนไหม?</p></div><div class="card-back"><p>มีรถตู้เอกชนให้บริการหลายสาย ติดต่อข้อมูลที่ฝ่ายบริหารทั่วไปครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-home"></i><p>ทะเบียนบ้านอยู่ ตจว. สมัครได้ไหม?</p></div><div class="card-back"><p>สมัครได้ในรอบห้องเรียนทั่วไปครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-user-friends"></i><p>ผู้ปกครองรอที่ไหนวันสอบ?</p></div><div class="card-back"><p>รอที่โดมเอนกประสงค์และโรงอาหารที่จัดเตรียมไว้ให้ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-folder-open"></i><p>Portfolio จำเป็นไหม?</p></div><div class="card-back"><p>จำเป็นมากสำหรับนักเรียนรอบความสามารถพิเศษครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-receipt"></i><p>เบิกสวัสดิการได้ไหม?</p></div><div class="card-back"><p>ใบเสร็จรับเงินสามารถนำไปเบิกตามระเบียบต้นสังกัดได้ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-search"></i><p>ลำดับที่สมัครมีผลต่อการสอบไหม?</p></div><div class="card-back"><p>ไม่มีผลครับ ใช้เพียงเป็นลำดับในการจัดการเอกสารเท่านั้น</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-user-check"></i><p>มอบตัวแทนนักเรียนได้ไหม?</p></div><div class="card-back"><p>ไม่ได้ครับ นักเรียนต้องมาด้วยตนเองเพื่อวัดตัวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-cut"></i><p>ทรงผมนักเรียนต้องตัดอย่างไร?</p></div><div class="card-back"><p>ตัดตามระเบียบศธ. และความเรียบร้อยของทางโรงเรียนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-id-badge"></i><p>บัตรสอบต้องปริ้นขาวดำหรือสี?</p></div><div class="card-back"><p>ปริ้นขาวดำได้ครับ ขอให้ตัวอักษรและรูปภาพชัดเจน</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-stethoscope"></i><p>ต้องตรวจสุขภาพก่อนมอบตัวไหม?</p></div><div class="card-back"><p>โรงเรียนมีบริการตรวจสุขภาพประจำปีให้นักเรียนหลังเปิดเรียนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-globe"></i><p>เว็บสมัครเข้าไม่ได้ทำอย่างไร?</p></div><div class="card-back"><p>แจ้งปัญหาที่เพจโรงเรียน หรือลองเปลี่ยนเบราว์เซอร์ดูครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-coffee"></i><p>โรงอาหารวันสอบเปิดไหม?</p></div><div class="card-back"><p>เปิดให้บริการจำหน่ายอาหารและน้ำดื่มตามปกติครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-check-double"></i><p>อัปโหลดรูปผิดใบ แก้ไขอย่างไร?</p></div><div class="card-back"><p>ถ้ายังไม่อนุมัติ สามารถแจ้งธุรการเพื่อเปิดระบบให้ส่งใหม่ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-pills"></i><p>มีห้องพยาบาลไหม?</p></div><div class="card-back"><p>มีเจ้าหน้าที่พยาบาลดูแลตลอดเวลาทำการครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-at"></i><p>ยืนยันอีเมลไม่ผ่าน?</p></div><div class="card-back"><p>ลองเช็คในอีเมลขยะ (Junk Mail) หรือติดต่อเจ้าหน้าที่ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-map-marker-alt"></i><p>ห้องสอบดูที่ไหน?</p></div><div class="card-back"><p>ระบุอยู่ในบัตรประจำตัวสอบของนักเรียนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-user-graduate"></i><p>จบต่างประเทศสมัครได้ไหม?</p></div><div class="card-back"><p>สมัครได้แต่ต้องมีใบเทียบวุฒิจากกระทรวงศึกษาธิการครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-user-plus"></i><p>สมัคร ม.1 และ ม.4 พร้อมกันได้ไหม?</p></div><div class="card-back"><p>นักเรียนหนึ่งคนสมัครได้เพียง 1 ระดับชั้นต่อรอบเท่านั้นครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-wifi"></i><p>เน็ตหลุดข้อมูลจะหายไหม?</p></div><div class="card-back"><p>ข้อมูลจะบันทึกเมื่อกดปุ่ม "ถัดไป" หรือ "บันทึก" ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-mask"></i><p>ไม่สบายวันสอบทำอย่างไร?</p></div><div class="card-back"><p>แจ้งครูหน้าอาคารสอบเพื่อแยกสอบห้องสอบพิเศษครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-address-book"></i><p>ใบเปลี่ยนชื่อต้องอัปโหลดไหม?</p></div><div class="card-back"><p>ต้องครับ หากชื่อปัจจุบันไม่ตรงกับใบ ปพ.1</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-tshirt"></i><p>ชุดนักเรียนซื้อข้างนอกได้ไหม?</p></div><div class="card-back"><p>ได้ครับ แต่ต้องให้ถูกต้องตามระเบียบโรงเรียนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-lock"></i><p>ระบบปิดกี่โมง?</p></div><div class="card-back"><p>ระบบปิดเวลา 16.30 น. ของวันสุดท้ายตามประกาศครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-award"></i><p>เกียรติบัตรปีไหนใช้ได้บ้าง?</p></div><div class="card-back"><p>แนะนำผลงานย้อนหลังไม่เกิน 3 ปีการศึกษาครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-pencil-alt"></i><p>ลืมเอาปากกามาทำอย่างไร?</p></div><div class="card-back"><p>ติดต่อสหกรณ์โรงเรียนหรือจุดบริการเครื่องเขียนในวันสอบครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-users"></i><p>มอบตัวคนละวันได้ไหม?</p></div><div class="card-back"><p>ต้องมาตามวันและเวลาที่กำหนดเพื่อรักษาสิทธิ์ครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-cloud-upload-alt"></i><p>อัปโหลดช้ามาก?</p></div><div class="card-back"><p>อาจเป็นเพราะขนาดรูปใหญ่เกินไป แนะนำให้ลดขนาดภาพลงครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-portrait"></i><p>รูปถ่ายใส่แว่นสายตาได้ไหม?</p></div><div class="card-back"><p>ใส่ได้ครับ แต่ต้องไม่สะท้อนแสงจนบังลูกตาครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-money-bill-wave"></i><p>มีค่าใช้จ่ายส่วนอื่นอีกไหม?</p></div><div class="card-back"><p>จะมีค่าชุดนักเรียนและอุปกรณ์ตามความจำเป็นครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-door-closed"></i><p>ออกจากห้องสอบก่อนเวลาได้ไหม?</p></div><div class="card-back"><p>ไม่ได้ครับ ต้องรอจนกว่าจะหมดเวลาและครูเก็บข้อสอบครบครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-file-export"></i><p>สมัครซ้ำสองที่ได้ไหม?</p></div><div class="card-back"><p>สมัครได้ แต่ระวังวันสอบอาจจะตรงกันครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-address-card"></i><p>สำเนาบัตรประชาชนบิดามารดาต้องใช้ไหม?</p></div><div class="card-back"><p>ต้องใช้ประกอบในการยื่นหลักฐานวันมอบตัวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-comments-dollar"></i><p>มีกองทุนกู้ยืม (กยศ.) ไหม?</p></div><div class="card-back"><p>ระดับมัธยมปลายมีโครงการสนับสนุนทุนกู้ยืมครับ</p></div></div></div>
-    <div class="flashcard" data-cat="exam"><div class="card-inner"><div class="card-front"><i class="fas fa-exclamation-circle"></i><p>ลืมบัตรสอบวันสอบ?</p></div><div class="card-back"><p>ติดต่อฝ่ายวิชาการเพื่อขอออกใบอนุญาตเข้าสอบชั่วคราวครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-user-tag"></i><p>สมัครความสามารถพิเศษอย่างเดียวได้ไหม?</p></div><div class="card-back"><p>ได้ครับ แต่ถ้าไม่ผ่าน ต้องรอกรอบรอบทั่วไปอีกครั้งครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-book-reader"></i><p>มีติวสอบไหม?</p></div><div class="card-back"><p>ทางโรงเรียนไม่มีนโยบายจัดติวสอบโดยบุคลากรภายในครับ</p></div></div></div>
-    <div class="flashcard" data-cat="doc"><div class="card-inner"><div class="card-front"><i class="fas fa-calendar-day"></i><p>ทะเบียนบ้านชื่ออยู่ไม่ถึง 2 ปี?</p></div><div class="card-back"><p>ให้ลงสมัครในรอบห้องเรียนทั่วไปแทนรอบพื้นที่บริการครับ</p></div></div></div>
-    <div class="flashcard" data-cat="sys"><div class="card-inner"><div class="card-front"><i class="fas fa-phone-alt"></i><p>ติดต่อสอบถามได้ทางไหนบ้าง?</p></div><div class="card-back"><p>เบอร์โทรโรงเรียน หรือ Inbox เพจเฟซบุ๊กโรงเรียนครับ</p></div></div></div>
-    <div class="flashcard" data-cat="mon"><div class="card-inner"><div class="card-front"><i class="fas fa-heart"></i><p>มีประกันอุบัติเหตุคุ้มครอง 24 ชม. ไหม?</p></div><div class="card-back"><p>มีครับ คุ้มครองอุบัติเหตุนักเรียนตลอด 24 ชั่วโมงครับ</p></div></div></div>
+    <div class="timeline-section">
+        <div class="section-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h2 class="section-title">ระยะที่ 2: ช่วงเวลาการรับสมัคร</h2>
+        <div class="qa-card"><div class="qa-q">13. ม.1 ห้องเรียนพิเศษ Gifted สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">8 - 12 กุมภาพันธ์ 2569</div></div>
+        <div class="qa-card"><div class="qa-q">14. ม.1 ห้องเรียนทั่วไป สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">19 - 23 มีนาคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">15. ม.1 ห้องเรียน EIS สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">19 - 23 มีนาคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">16. ม.1 ห้องวิทยาศาสตร์พลังสิบ สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">19 - 23 มีนาคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">17. ม.4 ห้องเรียนพิเศษ Gifted สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">8 - 12 กุมภาพันธ์ 2569</div></div>
+        <div class="qa-card"><div class="qa-q">18. ม.4 ห้องเรียนทั่วไป สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">19 - 23 มีนาคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">19. นักเรียนเดิมที่มีสิทธิ์โควตา ม.4 สมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">12 - 16 มกราคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">20. ช่วงเวลา Walk-in ที่โรงเรียนคือวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a"><span class="highlight">2 วันสุดท้าย</span> ของแต่ละรอบการสมัครครับ</div></div>
+        <div class="qa-card"><div class="qa-q">21. เจ้าหน้าที่ช่วยสมัคร Walk-in ถึงกี่โมง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">09.00 - 15.00 น. ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">22. จุดบริการ Walk-in อยู่ที่ไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ณ <span class="highlight">โรงอาหาร</span> โรงเรียนครับ</div></div>
+        <div class="qa-card"><div class="qa-q">23. เด็กในเขตพื้นที่บริการ ต้องสมัครประเภทไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">เลือก "ในเขตพื้นที่บริการ" ในรอบห้องทั่วไปครับ</div></div>
+        <div class="qa-card"><div class="qa-q">24. เด็กนอกเขตพื้นที่ สมัครห้องทั่วไปได้ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ได้ครับ โดยเลือก "นอกเขตพื้นที่บริการ"</div></div>
+        <div class="qa-card"><div class="qa-q">25. สอบความสามารถพิเศษสมัครวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">19 - 20 มีนาคม 2569</div></div>
+    </div>
 
-    <div id="noResult" class="no-result">
-        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 10px; opacity: 0.3;"></i>
-        <p>ไม่พบประเด็นที่ค้นหา... ลองใช้คำอื่นดูนะครับ</p>
+    <div class="timeline-section">
+        <div class="section-icon"><i class="fas fa-edit"></i></div>
+        <h2 class="section-title">ระยะที่ 3: วิชาสอบและการปฏิบัติตน</h2>
+        <div class="qa-card"><div class="qa-q">26. ห้อง Gifted ม.1 สอบวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">21 กุมภาพันธ์ 2569</div></div>
+        <div class="qa-card"><div class="qa-q">27. ห้อง Gifted ม.4 สอบวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">22 กุมภาพันธ์ 2569</div></div>
+        <div class="qa-card"><div class="qa-q">28. ห้องทั่วไป ม.1 สอบวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">28 มีนาคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">29. ห้องทั่วไป ม.4 สอบวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">29 มีนาคม 2569</div></div>
+        <div class="qa-card"><div class="qa-q">30. วิชาที่สอบห้อง Gifted มีอะไรบ้าง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">คณิตศาสตร์, วิทยาศาสตร์, ภาษาอังกฤษ</div></div>
+        <div class="qa-card"><div class="qa-q">31. เกณฑ์ "ร้อยละ 50" ของ Gifted คิดอย่างไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องได้ <span class="highlight">ไม่ต่ำกว่าร้อยละ 50</span> ในทุกวิชาครับ</div></div>
+        <div class="qa-card"><div class="qa-q">32. สอบผ่านแค่ 2 วิชา เข้าห้อง Gifted ได้ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ไม่ได้ครับ ต้องผ่านเกณฑ์ <span class="highlight">ทุกวิชา</span> ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">33. ห้องทั่วไป ม.1 สอบวิชาอะไรบ้าง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">5 วิชาหลัก (ไทย, สังคม, คณิต, วิทย์, อังกฤษ)</div></div>
+        <div class="qa-card"><div class="qa-q">34. ห้องทั่วไป ม.4 สอบวิชาอะไรบ้าง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">5 วิชาหลัก และวิชาเฉพาะสายที่เลือกครับ</div></div>
+        <div class="qa-card"><div class="qa-q">35. เวลาสอบห้องทั่วไปเริ่มกี่โมง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">08.30 น. ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">36. เวลาสอบห้องทั่วไปสิ้นสุดกี่โมง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">14.30 น. ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">37. ควรมาถึงสนามสอบก่อนกี่นาที? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ควรมาก่อนเวลา 30-45 นาทีครับ</div></div>
+        <div class="qa-card"><div class="qa-q">38. บัตรสอบต้องพิมพ์เป็นสีเท่านั้นไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ได้ทั้งสีและขาวดำครับ ขอให้ชัดเจน</div></div>
+        <div class="qa-card"><div class="qa-q">39. ลืมบัตรประชาชนวันสอบ ทำอย่างไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a">รีบติดต่อกองอำนวยการสอบทันทีครับ</div></div>
+        <div class="qa-card"><div class="qa-q">40. ดินสอที่ใช้ต้องเข้มระดับใด? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องเป็นดินสอ <span class="highlight">2B</span> ขึ้นไปครับ</div></div>
+        <div class="qa-card"><div class="qa-q">41. ใช้ปากกาลบได้ในกระดาษคำตอบไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">แนะนำให้ใช้ปากกาลูกลื่นสีน้ำเงินครับ</div></div>
+        <div class="qa-card"><div class="qa-q">42. สิ่งของที่ห้ามนำเข้าห้องสอบ? <i class="fas fa-chevron-down"></i></div><div class="qa-a"><span class="highlight">มือถือ, สมาร์ทวอทช์, เครื่องคิดเลข</span></div></div>
+        <div class="qa-card"><div class="qa-q">43. สนามสอบตั้งอยู่ที่ไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ณ โรงเรียนชลบุรี "สุขบท" ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">44. หากเจ็บป่วยวันสอบทำอย่างไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a">รีบแจ้งเจ้าหน้าที่คุมสอบทันทีครับ</div></div>
+    </div>
+
+    <div class="timeline-section">
+        <div class="section-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 class="section-title">ระยะที่ 4: ประกาศผลและมอบตัว</h2>
+        <div class="qa-card"><div class="qa-q">45. ประกาศผล Gifted เมื่อไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">26 กุมภาพันธ์ 2569</div></div>
+        <div class="qa-card"><div class="qa-q">46. ประกาศผลห้องทั่วไป ม.1 เมื่อไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">1 เมษายน 2569</div></div>
+        <div class="qa-card"><div class="qa-q">47. ประกาศผลห้องทั่วไป ม.4 เมื่อไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">2 เมษายน 2569</div></div>
+        <div class="qa-card"><div class="qa-q">48. ดูผลสอบได้ที่ไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">เว็บไซต์โรงเรียน หรือบอร์ดประชาสัมพันธ์ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">49. วันมอบตัวห้องเรียนทั่วไป ม.1 คือวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">4 เมษายน 2569 ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">50. วันมอบตัวห้องเรียนทั่วไป ม.4 คือวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">5 เมษายน 2569 ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">51. ค่ามอบตัว ห้อง Gifted เท่าไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a"><span class="highlight">9,255 บาท</span> ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">52. ค่ามอบตัว พลังสิบ ม.1 เท่าไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">6,255 บาท ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">53. ค่ามอบตัว พลังสิบ ม.4 เท่าไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">6,250 บาท ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">54. ค่ามอบตัว ห้อง EIS ม.1 เท่าไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">6,255 บาท ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">55. ค่ามอบตัว ห้องทั่วไป ม.1 เท่าไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">3,555 บาท ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">56. ค่ามอบตัว ห้องทั่วไป ม.4 เท่าไหร่? <i class="fas fa-chevron-down"></i></div><div class="qa-a">3,550 บาท ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">57. สามารถผ่อนชำระค่าเทอมได้ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องชำระยอดเต็มในวันมอบตัวครับ</div></div>
+        <div class="qa-card"><div class="qa-q">58. หากติดสำรองจะทราบผลได้อย่างไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ติดตามทางเพจและเว็บไซต์โรงเรียนครับ</div></div>
+        <div class="qa-card"><div class="qa-q">59. การรายงานตัวต้องทำอย่างไร? <i class="fas fa-chevron-down"></i></div><div class="qa-a"><span class="highlight">ต้องมารายงานตัวด้วยตนเอง</span> เพื่อยืนยันสิทธิ์ และรับเอกสารมอบตัวครับ</div></div>
+        <div class="qa-card"><div class="qa-q">60. หากไม่มามอบตัวถือว่าสละสิทธิ์ใช่ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ใช่ครับ <span class="highlight">สละสิทธิ์ทุกกรณี</span> ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">61. ต้องพานักเรียนมาวันมอบตัวด้วยไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องพามาวัดตัวตัดชุดครับ</div></div>
+        <div class="qa-card"><div class="qa-q">62. ย้ายแผนการเรียนหลังมอบตัวได้ไหม? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ขึ้นอยู่กับที่ว่างและงานวิชาการครับ</div></div>
+        <div class="qa-card"><div class="qa-q">63. ปพ.1 ที่นำมาส่งต้องเป็นฉบับใด? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ต้องเป็น <span class="highlight">ฉบับจบการศึกษา ปี 2568 เรียบร้อยแล้วเท่านั้น</span> ครับ</div></div>
+        <div class="qa-card"><div class="qa-q">64. ปพ.1 ในวันมอบตัวใช้ฉบับใดบ้าง? <i class="fas fa-chevron-down"></i></div><div class="qa-a">นำมาทั้ง <span class="highlight">ตัวจริง และถ่ายเอกสาร</span> (รับรองสำเนาและเซ็นกำกับด้วย)</div></div>
+        <div class="qa-card"><div class="qa-q">65. เอกสารอื่นที่ต้องเตรียมวันมอบตัว? <i class="fas fa-chevron-down"></i></div><div class="qa-a">สำเนาทะเบียนบ้านและสำเนาบัตรประชาชนครับ</div></div>
+        <div class="qa-card"><div class="qa-q">66. โรงเรียนเปิดเทอมวันไหน? <i class="fas fa-chevron-down"></i></div><div class="qa-a">ติดตามประกาศช่วงเดือนพฤษภาคมครับ</div></div>
+        <div class="qa-card"><div class="qa-q">67. สอบถามเรื่องวิชาการโทรเบอร์ใด? <i class="fas fa-chevron-down"></i></div><div class="qa-a">096-596-4728 (ห้องวิชาการ) ครับ</div></div>
     </div>
 </div>
-
-<footer>
-    <p>&copy; 2026 Chonburi Sukbot School | ยินดีต้อนรับนักเรียนใหม่ทุกคนครับ</p>
-</footer>
 
 <script>
-    // ระบบพลิกการ์ด (Flip)
-    const cards = document.querySelectorAll('.flashcard');
-    cards.forEach(card => card.addEventListener('click', () => card.classList.toggle('flipped')));
-
-    // ระบบค้นหาและ Filter
-    const searchInput = document.getElementById('searchInput');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const noResult = document.getElementById('noResult');
-
-    function filterItems() {
-        const searchText = searchInput.value.toLowerCase();
-        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-        let matchCount = 0;
-
-        cards.forEach(card => {
-            const cardText = card.innerText.toLowerCase();
-            const cardCat = card.dataset.cat;
-            const isMatch = cardText.includes(searchText) && (activeFilter === 'all' || cardCat === activeFilter);
-            
-            card.style.display = isMatch ? 'block' : 'none';
-            if (isMatch) matchCount++;
-        });
-        noResult.style.display = matchCount === 0 ? 'block' : 'none';
+    document.querySelectorAll('.qa-q').forEach(q => {
+        q.addEventListener('click', () => { q.parentElement.classList.toggle('active'); });
+    });
+    function filterQA() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('qa-card');
+        for (let i = 0; i < cards.length; i++) {
+            let text = cards[i].innerText.toLowerCase();
+            cards[i].style.display = text.includes(input) ? "" : "none";
+        }
     }
-
-    searchInput.addEventListener('input', filterItems);
-    filterBtns.forEach(btn => btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterItems();
-    }));
 </script>
 </body>
 </html>
